@@ -8,6 +8,7 @@ const Circle = ({ colour, fn }) => {
             borderRadius: '100%',
             backgroundColor: `${colour}`,
             marginBottom: '10px',
+            cursor: 'pointer',
          }}
          onClick={() => {
             fn(colour)

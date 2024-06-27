@@ -19,7 +19,14 @@ const Filter = ({ filters, onUnsetFilter, onClearAll }) => {
                <h3>Filtered Colours</h3>
             </div>
 
-            <button onClick={() => onClearAll()}>Clear all</button>
+            <button
+               style={{
+                  cursor: 'pointer',
+               }}
+               onClick={() => onClearAll()}
+            >
+               Clear all
+            </button>
          </div>
          <div>{renderFilters()}</div>
       </div>

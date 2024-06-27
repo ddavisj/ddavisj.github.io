@@ -1,16 +1,14 @@
 import Circle from './Circle'
 import './Filter.css'
 
-const Filter = ({ filtersSet, onUnsetFilter, onClearAll }) => {
+const Filter = ({ filters, onUnsetFilter, onClearAll }) => {
    const renderFilters = () =>
-      filtersSet.map(colour => {
+      filters.map(colour => {
          return (
-            <>
-               <div style={{ display: 'flex' }}>
-                  <span style={{ paddingRight: '5px' }}>-</span>
-                  <Circle key={colour} colour={colour} fn={onUnsetFilter} />
-               </div>
-            </>
+            <div key={colour} style={{ display: 'flex' }}>
+               <span style={{ paddingRight: '5px' }}>-</span>
+               <Circle key={colour} colour={colour} fn={onUnsetFilter} />
+            </div>
          )
       })
 

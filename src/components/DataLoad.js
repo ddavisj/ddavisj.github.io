@@ -3,20 +3,16 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 const DataLoad = ({ data }) => {
-   const [state, setState] = useState([])
-
    const [loaded, setLoaded] = useState(false)
 
    useEffect(() => {
       const loadData = async () => {
          const res = await axios.get(data.url)
-         setState(res)
          if (res) setLoaded(true)
+         console.log(res.data)
       }
       loadData()
    }, [data.url])
-
-   console.log(state.data)
 
    return (
       <div className="container">

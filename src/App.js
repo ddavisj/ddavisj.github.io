@@ -5,16 +5,32 @@ import Options from './components/Options'
 
 import { useState } from 'react'
 
-const App = () => {
-   const [filters, setFilters] = useState([]) // Filters set via Options
+const initColours = ['red', 'orange', 'aqua', 'green', 'blue', 'purple']
 
-   const [options, showOption] = useState([]) // Filters unset via Filter
+const App = () => {
+   const [filtersSet, setFilters] = useState([])
+
+   const onSetFilter = colour => {
+      setFilters([...filtersSet, colour])
+   }
+
+   const onUnsetFilter = colour => {
+      setFilters(filtersSet.filter(c => c !== colour))
+   }
 
    return (
       <div className="App">
          <Data />
-         <Filter filters={filters} showOption={showOption} />
-         <Options setFilters={setFilters} options={options} />
+         <Filter
+            filtersSet={filtersSet}
+            onUnsetFilter={onUnsetFilter}
+            onClearAll={() => setFilters([])}
+         />
+         <Options
+            onSetFilter={onSetFilter}
+            colours={initColours.filter(colour => !filtersSet.includes(colour))}
+            // only pass colour if not in filtersSet
+         />
       </div>
    )
 }

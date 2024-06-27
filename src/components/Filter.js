@@ -1,37 +1,30 @@
-// import { useState } from 'react'
+import Circle from './Circle'
+import './Filter.css'
 
-const Filter = ({ filters, showOption }) => {
-   // const [unsetFilters, unsetFilter] = useState([])
-
-   const onColourClick = colour => {
-      console.log(colour)
-      showOption([])
-   }
-
+const Filter = ({ filtersSet, onUnsetFilter, onClearAll }) => {
    const renderFilters = () =>
-      filters.map(colour => {
+      filtersSet.map(colour => {
          return (
-            <div
-               key={colour}
-               style={{
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '100%',
-                  backgroundColor: `${colour}`,
-               }}
-               onClick={() => {
-                  onColourClick(colour)
-               }}
-            ></div>
+            <>
+               <div style={{ display: 'flex' }}>
+                  <span style={{ paddingRight: '5px' }}>-</span>
+                  <Circle key={colour} colour={colour} fn={onUnsetFilter} />
+               </div>
+            </>
          )
       })
 
    return (
-      <>
-         <h3>Filtered Colours</h3>
+      <div className="Filter">
+         <div className="container">
+            <div style={{ marginRight: '20px' }}>
+               <h3>Filtered Colours</h3>
+            </div>
 
-         {filters.length ? renderFilters() : ''}
-      </>
+            <button onClick={() => onClearAll()}>Clear all</button>
+         </div>
+         <div>{renderFilters()}</div>
+      </div>
    )
 }
 

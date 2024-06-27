@@ -1,0 +1,9 @@
+.Filter {
+   border: solid 1px black;
+   padding: 0 20px 20px 20px;
+}
+
+.Filter .container {
+   display: flex;
+   align-items: center;
+}

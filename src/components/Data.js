@@ -1,21 +1,18 @@
+import './Data.css'
 import DataLoad from './DataLoad'
 
 const dataSets = [
    {
-      name: 'circles',
+      name: 'Circles',
       url: 'https://gabriel2761.github.io/data/circles.json',
    },
    {
-      name: 'circles2',
+      name: 'Circles2',
       url: 'https://gabriel2761.github.io/data/circles2.json',
    },
-   // {
-   //    name: 'circles3',
-   //    url: 'https://gabriel2761.github.io/data/circles3.json',
-   // },
 ]
 
-const renderData = () => {
+const renderDataSets = () => {
    return dataSets.map(data => {
       return <DataLoad key={data.name} data={data} />
    })
@@ -23,12 +20,12 @@ const renderData = () => {
 
 const Data = () => {
    return (
-      <>
+      <div className="Data">
          <div>
             <h3>Data Loading</h3>
          </div>
-         {renderData()}
-      </>
+         {renderDataSets()}
+      </div>
    )
 }
 

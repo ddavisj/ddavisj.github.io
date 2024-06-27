@@ -1,5 +1,4 @@
 import axios from 'axios'
-import './DataLoad.css'
 
 import { useEffect, useState } from 'react'
 
@@ -15,13 +14,15 @@ const DataLoad = ({ data }) => {
          if (res) setLoaded(true)
       }
       loadData()
-   }, [])
+   }, [data.url])
 
    console.log(state.data)
 
    return (
       <div className="container">
-         <div style={{ paddingRight: '10px' }}>{loaded ? 'Yes' : 'No'}</div>
+         <div style={{ paddingRight: '10px', paddingBottom: '10px' }}>
+            {loaded ? '✅' : '❌'}
+         </div>
          <div>{data.name}</div>
       </div>
    )
